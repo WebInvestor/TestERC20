@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 // ----------------------------------------------------------------------------
-// Safe Math Library
+// Библиотека безопасных вычислений
 // ----------------------------------------------------------------------------
 library SafeMath {
 
@@ -43,7 +43,7 @@ library SafeMath {
 }
 
 // ----------------------------------------------------------------------------
-// ERC Token Standard #20 Interface
+// Стандартный интерфейс ERC20
 //
 // ----------------------------------------------------------------------------
 contract ERC20Interface {
@@ -63,25 +63,25 @@ contract ERC20Interface {
 
 
 contract TestToken is ERC20Interface {
-    string public name;
-    string public symbol;
-    uint8 public decimals; // 18 decimals is the strongly suggested default, avoid changing it
+    string public name;    //Наименование токена
+    string public symbol;  //Тикер 
+    uint8 public decimals; //Количество десятичных знаков после запятой
    
     uint256 public _totalSupply;
    
     mapping(address => uint) balances;
     mapping(address => mapping(address => uint)) allowed;
    
-    /**
+    /*
      * Constrctor function
      *
-     * Initializes contract with initial supply tokens to the creator of the contract
+     * Инициализация контракта с перечислением всех токенов владельцу
      */
     constructor() public {
         name = "TestSocialNet";
         symbol = "TSN";
         decimals = 4;
-        _totalSupply = 3000000;
+        _totalSupply = 3000000; //Количество токенов 300 с учетом 4 знаков после запятой
        
         balances[msg.sender] = _totalSupply;
         emit Transfer(address(0), msg.sender, _totalSupply);
